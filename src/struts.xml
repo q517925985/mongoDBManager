@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.devMode" value="false"></constant>
+	<constant name="struts.multipart.maxSize" value="2000000000"/> 
+	<package name="test" namespace="/" extends="json-default">
+		<interceptors>
+			<interceptor name="loginInteceptor" class="com.interceptor.LoginInterceptor"></interceptor>
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="loginInteceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="loginStack" />
+		<global-results>
+			<result name="login" type="redirect">login.html</result>
+		</global-results>
+		<action name="users_*" class="com.action.UsersAction" method="{1}">
+			<result name="success" type="redirect">users_index.action</result>
+			<result name="redirect_list" type="redirect">users_list.action</result>
+			<result name="redirect_toUpdate" type="redirect">users_toUpdate.action</result>
+			<result name="toUpdate">userUpdate.jsp</result>
+			<result name="toLogin">login.html</result>
+			<result name="list">user.jsp</result>
+			<result name="json">json.jsp</result>
+			<result name="userIsValidty" type="json">
+				<param name="root">userIsValidty</param>
+			</result>
+			<result name="index">index.jsp</result>
+		</action>
+		<action name="posi_*" class="com.action.PositionsAction" method="{1}">
+			<result name="list">posi.jsp</result>
+			<result name="redirect_list" type="redirect">posi_list.action</result>
+		</action>
+		<action name="dep_*" class="com.action.DepartmentsAction" method="{1}">
+			<result name="list">dep.jsp</result>
+			<result name="redirect_list" type="redirect">dep_list.action</result>
+		</action>
+		<action name="connect_*" class="com.action.ConnectAction" method="{1}">
+			<result name="list">connect.jsp</result>
+			<result name="redirect_list" type="redirect">connect_list.action</result>
+		</action>
+		<action name="connectType_*" class="com.action.ConnectTypeAction" method="{1}">
+			<result name="list">connectType.jsp</result>
+			<result name="redirect_list" type="redirect">connectType_list.action</result>
+		</action>
+
+		<action name="mongo_*" class="com.action.MongoAction" method="{1}">
+			<result name="list" type="">mongoDB.jsp</result>
+			<result name="dbListJson" type="json">
+				<param name="root">dbList</param>
+			</result>
+			
+			<result type="stream" name="export">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">downloadFile</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+			<result type="stream" name="exports">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">downloadFiles</param>
+				<param name="contentDisposition">attachment;filename="${zipFileName}"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+			<result name="redirect_list" type="redirect">mongo_connectList.action</result>
+			<result name="connectJson" type="json">
+				<param name="root">connectJson</param>
+			</result>
+			<result name="progressJson" type="json">
+				<param name="root">progress</param>
+			</result>
+		</action>
+
+		<action name="logRecord_*" class="com.action.LogRecordAction" method="{1}">
+			<result name="list">logRecord.jsp</result>
+			<result name="redirect_list" type="redirect">logRecord_list.action</result>
+		</action>
+		<action name="mongoSync_*" class="com.action.MongoSyncAction" method="{1}">
+			<result name="list">mongoSync.jsp</result>
+			<result name="redirect_list" type="redirect">mongoSync_connectList.action</result>
+			<result name="dbListAJson" type="json">
+				<param name="root">dbListA</param>
+			</result>
+			<result name="dbListBJson" type="json">
+				<param name="root">dbListB</param>
+			</result>
+			<result name="tbListAJson" type="json">
+				<param name="root">tbListA</param>
+			</result>
+			<result name="tbListBJson" type="json">
+				<param name="root">tbListB</param>
+			</result>
+		</action>
+		
+		<action name="task_*" class="com.action.TaskAction" method="{1}">
+			<result name="list">task.jsp</result>
+			<result name="json" type="json">
+				<param name="root">execute</param>
+			</result>
+			<result name="redirect_list" type="redirect">task_list.action</result>
+		</action>
+	</package>
+</struts>    

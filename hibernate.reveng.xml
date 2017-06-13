@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table catalog="mongoDBManage" name="positions">
+		<column name="id"></column>
+		<column name="posiName"></column>
+	</table>
+	<table catalog="mongoDBManage" name="users">
+		<column name="userId"></column>
+		<column name="userName"></column>
+		<column name="password"></column>
+		<column name="gender"></column>
+		<column name="age"></column>
+		<column name="depId"></column>
+		<column name="posiId"></column>
+		<column name="phone"></column>
+		<column name="email"></column>
+	</table>
+	<table catalog="mongoDBManage" name="departments">
+		<column name="id"></column>
+		<column name="depName"></column>
+	</table>
+	<table catalog="mongoDBManage" name="log_record">
+		<column name="id"></column>
+		<column name="userId"></column>
+		<column name="connectId"></column>
+		<column name="datebaseName"></column>
+		<column name="tableName"></column>
+		<column name="operationType"></column>
+		<column name="operationTime"></column>
+		<column name="remarks"></column>
+	</table>
+	<table catalog="mongoDBManage" name="connectType">
+		<column name="id"></column>
+		<column name="typeName"></column>
+	</table>
+	<table-filter match-name="connect" match-catalog="mongoDBManage"></table-filter>
+	<table-filter match-name="connectType" match-catalog="mongoDBManage"></table-filter>
+	<table-filter match-name="departments" match-catalog="mongoDBManage"></table-filter>
+	<table-filter match-name="log_record" match-catalog="mongoDBManage"></table-filter>
+	<table-filter match-name="positions" match-catalog="mongoDBManage"></table-filter>
+	<table-filter match-name="users" match-catalog="mongoDBManage"></table-filter>
+	<table catalog="mongoDBManage" name="connect">
+		<column name="connectId"></column>
+		<column name="connectTypeId"></column>
+		<column name="connectIp"></column>
+		<column name="connectPort"></column>
+		<column name="connectName"></column>
+		<column name="connectPassword"></column>
+	</table>
+	<table catalog="mongoDBManage" name="task">
+		<column name="id"></column>
+		<column name="importType"></column>
+		<column name="sourceConnectId"></column>
+		<column name="sourceDatebaseName"></column>
+		<column name="receivedConnectId"></column>
+		<column name="receivedDatebaseName"></column>
+		<column name="remarks"></column>
+	</table>
+	<table catalog="mongoDBManage" name="sourceTable">
+		<column name="id"></column>
+		<column name="taskId"></column>
+		<column name="sourceTableName"></column>
+	</table>
+</hibernate-reverse-engineering>

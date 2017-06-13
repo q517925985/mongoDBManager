@@ -1,0 +1,3 @@
+importPath=/data/mongo_collection/import/
+exportPath=/data/mongo_collection/export/
+backupPath=/data/mongo_collection/backup/

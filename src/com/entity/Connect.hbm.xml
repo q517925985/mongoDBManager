@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-5-7 16:11:59 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.entity.Connect" table="connect" catalog="mongoDBManage">
+        <id name="connectId" type="java.lang.Integer">
+            <column name="connectId" />
+            <generator class="identity" />
+        </id>
+        <property name="connectName" type="string">
+            <column name="connectName" length="20" not-null="true" />
+        </property>
+        <property name="connectTypeId" type="int">
+            <column name="connectTypeId" not-null="true" />
+        </property>
+        <property name="connectIp" type="string">
+            <column name="connectIp" length="20" not-null="true" />
+        </property>
+        <property name="connectPort" type="int">
+            <column name="connectPort" not-null="true" />
+        </property>
+        <property name="connectUserName" type="string">
+            <column name="connectUserName" length="20" not-null="true" />
+        </property>
+        <property name="connectPassword" type="string">
+            <column name="connectPassword" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

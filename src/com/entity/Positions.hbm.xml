@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-5-7 16:11:59 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.entity.Positions" table="positions" catalog="mongoDBManage">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="posiName" type="string">
+            <column name="posiName" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>
